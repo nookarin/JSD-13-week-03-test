@@ -16,5 +16,9 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking:   Find out how much revenue the truck has made across the recoreded orders and return them as a single total_revenue.
+--                  My thinking process -> For SQL is more straight forware, use "SUM" function to calculate from "Orders" to be "total_revenue"
 --
+SELECT
+    SUM(total_price) AS total_revenue
+FROM Orders;

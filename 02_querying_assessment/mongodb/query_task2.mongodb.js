@@ -17,5 +17,21 @@
 // are involved, and what MongoDB concepts you plan to use.
 // Write in English or Thai. Do not skip this step.
 //
-// Your thinking:
+// Your thinking:   The required data are the orders that were handled by Jane Doe, I need to query all that said data.
+//                  I need to only get certain data like order_date and total_price as instructed to easily show the manager.
+//                  My thinking process is -> find staff named Jane Doe in orders -> show only order date and total price.
 //
+
+use("chrome-burger-db");
+
+db.orders.find(
+    {
+        "staff.first_name": "Jane",
+        "staff.last_name": "Doe"
+    },
+    {
+        _id: 0,
+        order_date: 1,
+        total_price: 1
+    }
+)

@@ -16,5 +16,11 @@
 // are involved, and what MongoDB concepts you plan to use.
 // Write in English or Thai. Do not skip this step.
 //
-// Your thinking:
+// Your thinking:   The owner wants to determine which menu would be the best to be budget friendly option by finding items under 10 USD.
+//                  I need to list all the meal item(menu_items) that under 10 USD from the "chrome-burger-db" database.
 //
+use("chrome-burger-db");
+
+db.menu_items.find({
+    price: { $lte: 10 }
+})

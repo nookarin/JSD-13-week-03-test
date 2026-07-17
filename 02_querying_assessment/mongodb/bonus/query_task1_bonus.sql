@@ -16,5 +16,8 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking:   The owner wants to determine which menu would be the best to be budget friendly option by finding items under 10 USD.
+--                  I need to list all the meal item(MenuItems) that under 10 USD from the database.
 --
+SELECT * FROM MenuItems
+WHERE price <= 10;

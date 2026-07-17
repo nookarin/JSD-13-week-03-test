@@ -16,5 +16,7 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking: I need to list all the ingredients that have 100 or more in stock.
 --
+SELECT * FROM Ingredients
+WHERE stock_level >= 100;
