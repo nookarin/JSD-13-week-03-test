@@ -39,6 +39,13 @@ app.get("/", (req, res) => {
   );
 });
 
+app.get("/debug", (req, res) => {
+  res.json({
+    cwd: process.cwd(),
+    htmlPath: path.join(process.cwd(), "03_chrome-burger-landing-page", "index.html")
+  });
+});
+
 // 4. Database Connections
 // PostgreSQL Connection
 const { Pool } = pg;
