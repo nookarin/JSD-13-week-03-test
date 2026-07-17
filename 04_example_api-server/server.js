@@ -7,6 +7,8 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import mongoose from "mongoose"; // Import mongoose
 
+import path from "path";
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -29,6 +31,7 @@ app.use(limiter);
 
 // Body parser middleware
 app.use(express.json());
+app.use(express.static(path.join(process.cwd(), "03_chrome-burger-landing-page")));
 
 // 4. Database Connections
 // PostgreSQL Connection
