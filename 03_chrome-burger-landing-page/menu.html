@@ -72,8 +72,10 @@
     </footer>
 
     <script>
-      const SUPABASE_URL = "https://chrome-burger-db-server.onrender.com/api/menu-items";
-      const MONGODB_URL  = "https://chrome-burger-db-server.onrender.com/api/mongodb-menu-items";
+      const SUPABASE_URL = "http://localhost:3000/api/menu-items";
+      const MONGODB_URL  = "http://localhost:3000/api/mongodb-menu-items";
+      //const SUPABASE_URL = "https://chrome-burger-db-server.onrender.com/api/menu-items";
+      //const MONGODB_URL  = "https://chrome-burger-db-server.onrender.com/api/mongodb-menu-items";
 
       function renderMenuItems(items, containerId) {
         const container = document.getElementById(containerId);
