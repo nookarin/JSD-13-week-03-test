@@ -30,7 +30,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Body parser middleware
-//app.use(express.json());
+app.use(express.json());
 app.use(express.static(path.join(process.cwd(), "03_chrome-burger-landing-page")));
 
 app.get("/", (req, res) => {
