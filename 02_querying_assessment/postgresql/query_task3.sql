@@ -18,5 +18,19 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking:   Find out who is the hardest working cashier is by finding out who has the most order.
+--                  My thinking process -> Create full name using CONCAT -> use COUNT to count order for each cashier
+--                  -> join staffs who are the cashiers -> group them so it can be ordered by descending total order.
 --
+SELECT
+    CONCAT(s.first_name, ' ', s.last_name) AS full_name,
+    COUNT(o.order_id) AS total_orders
+FROM orders o
+JOIN staff s
+    ON o.staff_id = s.staff_id
+WHERE role = 'Cashier' --only find cashiers
+GROUP BY
+    s.first_name,
+    s.last_name
+ORDER BY
+    total_orders DESC;

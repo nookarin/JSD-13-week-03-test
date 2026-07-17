@@ -16,5 +16,13 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
---
+-- Your thinking: Find out what "Freshest Farm Produce" supply us. Join "Suppliers" and "Ingredients" to cross reference using "supplier_id".
+-- The query result will project the name of both supplier and ingredient when selected "name" for both.
+
+SELECT
+    n.name,
+    i.name
+FROM Suppliers n
+JOIN Ingredients i
+    ON n.supplier_id = i.supplier_id
+WHERE n.name = 'Freshest Farm Produce'

@@ -18,5 +18,33 @@
 // are involved, and what MongoDB concepts you plan to use.
 // Write in English or Thai. Do not skip this step.
 //
-// Your thinking:
+// Your thinking: Find out what "Freshest Farm Produce" supply us. Join "suppliers" and "ingredients" collection to cross reference "supplier_id" and "_id" as the same id.
+// The query result will project "Freshest Farm Produce" ingredients.
 //
+use("chrome-burger-db");
+
+db.suppliers.aggregate([
+  {
+    $match: {
+      name: "Freshest Farm Produce"
+    }
+  },
+  {
+    $lookup: {
+      from: "ingredients",
+      localField: "_id",
+      foreignField: "supplier_id",
+      as: "ingredients"
+    }
+  },
+  {
+    $unwind: "$ingredients"
+  },
+  {
+    $project: {
+      _id: 0,
+      supplier_name: "$name",
+      ingredient_name: "$ingredients.name"
+    }
+  }
+]);

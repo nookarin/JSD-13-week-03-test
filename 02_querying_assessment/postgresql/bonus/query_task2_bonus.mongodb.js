@@ -16,5 +16,18 @@
 // are involved, and what MongoDB concepts you plan to use.
 // Write in English or Thai. Do not skip this step.
 //
-// Your thinking:
+// Your thinking: List first_name and last_name whose role is "Cook" and hide id for easily read
 //
+
+use("chrome-burger-db");
+
+db.staff.find(
+    {
+        role: "Cook"
+    },
+    {   
+        _id: 0,
+        first_name: 1,
+        last_name: 1
+    }
+)

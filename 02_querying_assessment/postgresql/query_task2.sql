@@ -16,5 +16,8 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking: List first_name and last_name whose role is "Cook"
 --
+
+SELECT first_name, last_name FROM Staff
+Where role = 'Cook'

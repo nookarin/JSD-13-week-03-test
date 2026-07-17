@@ -18,5 +18,57 @@
 // are involved, and what MongoDB concepts you plan to use.
 // Write in English or Thai. Do not skip this step.
 //
-// Your thinking:
+// Your thinking:   Find out who is the hardest working cashier is by finding out who has the most order.
+//                  In MongoDB, it's best to use aggregation pipeline
+//                  My thinking process -> Use aggregation pipeline to first find employee's order as well as find out who is cashier via $lookup
+//                  -> project the result and $sort descending using total_orders: -1
 //
+
+use("chrome-burger-db");
+
+db.orders.aggregate([
+    {  
+        $lookup:{
+            from: "staff",
+            localField: "staff_id",
+            foreignField: "staff_id",
+            as: "staff" // join the data from another collection
+        }
+    },
+    {$unwind: "$staff"},
+      {
+    $match: 
+        {
+      "staff.role": "Cashier" // find only cashier
+        }
+    },
+    {
+    $group: {
+      _id: {
+        first_name: "$staff.first_name",
+        last_name: "$staff.last_name"
+      },
+      total_orders: {
+        $sum: 1
+      }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      full_name: {
+        $concat: [
+          "$_id.first_name",
+          " ",
+          "$_id.last_name"
+        ]
+      },
+      total_orders: 1
+    }
+  },
+  {
+    $sort: {
+      total_orders: -1
+    }
+  }
+]);

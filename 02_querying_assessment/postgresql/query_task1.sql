@@ -16,5 +16,8 @@
 -- involved, and what SQL concepts you plan to use.
 -- Write in English or Thai. Do not skip this step.
 --
--- Your thinking:
+-- Your thinking: List all the "MenuItems" in "Side" category.
 --
+
+SELECT * FROM MenuItems
+Where category = 'Side'
