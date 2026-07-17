@@ -31,7 +31,13 @@ app.use(limiter);
 
 // Body parser middleware
 //app.use(express.json());
-app.use(express.static(path.join(process.cwd(), "03_chrome-burger-landing-page", "index.html")));
+app.use(express.static(path.join(process.cwd(), "03_chrome-burger-landing-page")));
+
+app.get("/", (req, res) => {
+  res.sendFile(
+    path.join(process.cwd(), "03_chrome-burger-landing-page", "index.html")
+  );
+});
 
 // 4. Database Connections
 // PostgreSQL Connection
